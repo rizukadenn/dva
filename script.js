@@ -1,108 +1,449 @@
 /* =====================================================
-   BIRTHDAY WEBSITE SCRIPT
+   LOADING SCREEN
 ===================================================== */
+
+const loadingScreen =
+  document.getElementById("loadingScreen");
+
+const loadingProgress =
+  document.getElementById("loadingProgress");
+
+const loadingPercent =
+  document.getElementById("loadingPercent");
+
+const introScreen =
+  document.getElementById("introScreen");
+
+
+let progress = 0;
+
+
+const loadingInterval = setInterval(() => {
+
+  progress +=
+    Math.floor(Math.random() * 4) + 1;
+
+
+  if (progress >= 100) {
+
+    progress = 100;
+
+    clearInterval(
+      loadingInterval
+    );
+
+    loadingProgress.style.width =
+      "100%";
+
+    loadingPercent.textContent =
+      "100%";
+
+
+    setTimeout(() => {
+
+      loadingScreen.classList.add(
+        "hide"
+      );
+
+      introScreen.classList.add(
+        "active"
+      );
+
+    }, 700);
+
+    return;
+
+  }
+
+
+  loadingProgress.style.width =
+    progress + "%";
+
+  loadingPercent.textContent =
+    progress + "%";
+
+}, 60);
 
 
 /* =====================================================
-   LETTER
+   INTRO ENVELOPE
 ===================================================== */
 
-const envelope = document.getElementById("envelope");
-const openLetterBtn = document.getElementById("openLetterBtn");
+const introEnvelope =
+  document.getElementById(
+    "introEnvelope"
+  );
 
-openLetterBtn.addEventListener("click", () => {
+const envelopeHint =
+  document.getElementById(
+    "envelopeHint"
+  );
 
-  envelope.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-
-  setTimeout(() => {
-    envelope.classList.add("open");
-  }, 700);
-
-});
+const recipientContainer =
+  document.getElementById(
+    "recipientContainer"
+  );
 
 
-envelope.addEventListener("click", () => {
+let introOpened = false;
 
-  envelope.classList.toggle("open");
 
-});
+introEnvelope.addEventListener(
+  "click",
+  () => {
+
+    if (introOpened) return;
+
+    introOpened = true;
+
+
+    introEnvelope.classList.add(
+      "open"
+    );
+
+
+    envelopeHint.style.opacity =
+      "0";
+
+
+    setTimeout(() => {
+
+      recipientContainer.classList.add(
+        "show"
+      );
+
+      createIntroParticles();
+
+    }, 900);
+
+  }
+);
+
+
+/* =====================================================
+   INTRO PARTICLES
+===================================================== */
+
+function createIntroParticles() {
+
+  const symbols = [
+    "♡",
+    "✦",
+    "✧",
+    "⋆",
+    "🩵"
+  ];
+
+
+  for (let i = 0; i < 35; i++) {
+
+    const particle =
+      document.createElement("span");
+
+
+    particle.textContent =
+      symbols[
+        Math.floor(
+          Math.random() *
+          symbols.length
+        )
+      ];
+
+
+    particle.style.position =
+      "fixed";
+
+    particle.style.left =
+      Math.random() * 100 + "%";
+
+    particle.style.top =
+      (45 + Math.random() * 45) + "%";
+
+    particle.style.zIndex =
+      "15";
+
+    particle.style.pointerEvents =
+      "none";
+
+    particle.style.color =
+      "rgba(255,255,255,.9)";
+
+    particle.style.fontSize =
+      (12 + Math.random() * 20) + "px";
+
+
+    const duration =
+      2.5 + Math.random() * 4;
+
+
+    particle.animate(
+      [
+        {
+          transform:
+            "translateY(0) scale(.5) rotate(0deg)",
+
+          opacity: 0
+        },
+
+        {
+          transform:
+            "translateY(-150px) scale(1) rotate(90deg)",
+
+          opacity: 1
+        },
+
+        {
+          transform:
+            "translateY(-350px) scale(.7) rotate(180deg)",
+
+          opacity: 0
+        }
+
+      ],
+      {
+        duration:
+          duration * 1000,
+
+        easing:
+          "ease-out"
+      }
+    );
+
+
+    document.body.appendChild(
+      particle
+    );
+
+
+    setTimeout(() => {
+
+      particle.remove();
+
+    }, duration * 1000);
+
+  }
+
+}
+
+
+/* =====================================================
+   ENTER MAIN WEBSITE
+===================================================== */
+
+const enterButton =
+  document.getElementById(
+    "enterButton"
+  );
+
+const mainSite =
+  document.getElementById(
+    "mainSite"
+  );
+
+
+enterButton.addEventListener(
+  "click",
+  () => {
+
+    createConfetti();
+
+
+    introScreen.classList.add(
+      "exit"
+    );
+
+
+    setTimeout(() => {
+
+      mainSite.classList.add(
+        "active"
+      );
+
+      document.body.style.overflow =
+        "auto";
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+    }, 800);
+
+  }
+);
+
+
+/* =====================================================
+   HERO SCROLL
+===================================================== */
+
+const scrollButton =
+  document.getElementById(
+    "scrollButton"
+  );
+
+const animationSection =
+  document.querySelector(
+    ".animation-section"
+  );
+
+
+scrollButton.addEventListener(
+  "click",
+  () => {
+
+    animationSection.scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+);
+
+
+/* =====================================================
+   MAIN ENVELOPE
+===================================================== */
+
+const mainEnvelope =
+  document.getElementById(
+    "mainEnvelope"
+  );
+
+
+mainEnvelope.addEventListener(
+  "click",
+  () => {
+
+    mainEnvelope.classList.toggle(
+      "open"
+    );
+
+  }
+);
 
 
 /* =====================================================
    SCROLL REVEAL
 ===================================================== */
 
-const revealElements = document.querySelectorAll(".reveal");
+const revealElements =
+  document.querySelectorAll(
+    ".reveal"
+  );
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
 
-    entries.forEach((entry) => {
+const revealObserver =
+  new IntersectionObserver(
+    (entries) => {
 
-      if (entry.isIntersecting) {
+      entries.forEach(
+        (entry) => {
 
-        entry.target.classList.add("visible");
+          if (
+            entry.isIntersecting
+          ) {
 
-      }
+            entry.target.classList.add(
+              "visible"
+            );
 
-    });
+          }
 
-  },
-  {
-    threshold: 0.15
+        }
+      );
+
+    },
+    {
+      threshold: .12
+    }
+  );
+
+
+revealElements.forEach(
+  (element) => {
+
+    revealObserver.observe(
+      element
+    );
+
   }
 );
-
-
-revealElements.forEach((element) => {
-
-  revealObserver.observe(element);
-
-});
 
 
 /* =====================================================
    GIFT
 ===================================================== */
 
-const giftBox = document.getElementById("giftBox");
-const surpriseModal = document.getElementById("surpriseModal");
-const closeModal = document.getElementById("closeModal");
+const giftBox =
+  document.getElementById(
+    "giftBox"
+  );
 
-giftBox.addEventListener("click", () => {
+const surpriseModal =
+  document.getElementById(
+    "surpriseModal"
+  );
 
-  giftBox.classList.add("open");
-
-  createConfetti();
-
-  setTimeout(() => {
-
-    surpriseModal.classList.add("active");
-
-  }, 500);
-
-});
+const closeModal =
+  document.getElementById(
+    "closeModal"
+  );
 
 
-closeModal.addEventListener("click", () => {
+giftBox.addEventListener(
+  "click",
+  () => {
 
-  surpriseModal.classList.remove("active");
+    giftBox.classList.add(
+      "open"
+    );
 
-});
+
+    createConfetti();
 
 
-surpriseModal.addEventListener("click", (event) => {
+    setTimeout(() => {
 
-  if (event.target === surpriseModal) {
+      surpriseModal.classList.add(
+        "active"
+      );
 
-    surpriseModal.classList.remove("active");
+    }, 600);
 
   }
+);
 
-});
+
+closeModal.addEventListener(
+  "click",
+  () => {
+
+    surpriseModal.classList.remove(
+      "active"
+    );
+
+  }
+);
+
+
+surpriseModal.addEventListener(
+  "click",
+  (event) => {
+
+    if (
+      event.target ===
+      surpriseModal
+    ) {
+
+      surpriseModal.classList.remove(
+        "active"
+      );
+
+    }
+
+  }
+);
 
 
 /* =====================================================
@@ -112,42 +453,69 @@ surpriseModal.addEventListener("click", (event) => {
 function createConfetti() {
 
   const container =
-    document.getElementById("confettiContainer");
+    document.getElementById(
+      "confettiContainer"
+    );
+
 
   const symbols = [
     "♡",
     "✦",
     "✧",
-    "🩵",
     "⋆",
+    "🩵",
     "✨"
   ];
+
 
   for (let i = 0; i < 70; i++) {
 
     const confetti =
-      document.createElement("span");
+      document.createElement(
+        "span"
+      );
 
-    confetti.classList.add("confetti");
+
+    confetti.className =
+      "confetti";
+
 
     confetti.textContent =
       symbols[
-        Math.floor(Math.random() * symbols.length)
+        Math.floor(
+          Math.random() *
+          symbols.length
+        )
       ];
+
 
     confetti.style.left =
       Math.random() * 100 + "%";
 
-    confetti.style.animationDuration =
-      (3 + Math.random() * 4) + "s";
-
-    confetti.style.animationDelay =
-      Math.random() * 0.8 + "s";
 
     confetti.style.fontSize =
-      (12 + Math.random() * 18) + "px";
+      (
+        12 +
+        Math.random() * 18
+      ) + "px";
 
-    container.appendChild(confetti);
+
+    confetti.style.animationDuration =
+      (
+        3 +
+        Math.random() * 4
+      ) + "s";
+
+
+    confetti.style.animationDelay =
+      (
+        Math.random() * .8
+      ) + "s";
+
+
+    container.appendChild(
+      confetti
+    );
 
 
     setTimeout(() => {
@@ -162,185 +530,28 @@ function createConfetti() {
 
 
 /* =====================================================
-   FLOATING PARTICLES
+   CLICK SPARKLE
 ===================================================== */
 
-function createParticles() {
+document.addEventListener(
+  "click",
+  (event) => {
 
-  const amount = 25;
+    if (
+      event.target.closest("button") ||
+      event.target.closest(".intro-envelope") ||
+      event.target.closest(".main-envelope")
+    ) {
 
-  for (let i = 0; i < amount; i++) {
+      createClickSparkle(
+        event.clientX,
+        event.clientY
+      );
 
-    const particle =
-      document.createElement("div");
-
-    particle.className = "particle";
-
-    particle.innerHTML =
-      Math.random() > 0.5
-        ? "✦"
-        : "♡";
-
-    particle.style.position = "fixed";
-
-    particle.style.left =
-      Math.random() * 100 + "%";
-
-    particle.style.top =
-      Math.random() * 100 + "%";
-
-    particle.style.color =
-      "rgba(255,255,255,0.6)";
-
-    particle.style.fontSize =
-      (8 + Math.random() * 12) + "px";
-
-    particle.style.pointerEvents =
-      "none";
-
-    particle.style.zIndex = "2";
-
-    particle.style.animation =
-      `particleFloat ${
-        5 + Math.random() * 8
-      }s ease-in-out infinite`;
-
-    particle.style.animationDelay =
-      Math.random() * 5 + "s";
-
-    document.body.appendChild(particle);
+    }
 
   }
-
-}
-
-
-const particleStyle =
-document.createElement("style");
-
-particleStyle.textContent = `
-
-@keyframes particleFloat {
-
-  0%, 100% {
-    transform:
-      translateY(0)
-      rotate(0deg);
-
-    opacity: 0.2;
-  }
-
-  50% {
-    transform:
-      translateY(-40px)
-      rotate(180deg);
-
-    opacity: 0.8;
-  }
-
-}
-
-`;
-
-document.head.appendChild(particleStyle);
-
-createParticles();
-
-
-/* =====================================================
-   MUSIC
-===================================================== */
-
-const music =
-  document.getElementById("birthdayMusic");
-
-const musicBtn =
-  document.getElementById("musicBtn");
-
-let musicPlaying = false;
-
-
-musicBtn.addEventListener("click", () => {
-
-  /*
-    Kalau belum ada file musik,
-    browser tidak akan memainkan apa-apa.
-  */
-
-  if (!music.src) {
-
-    alert(
-      "Tambahkan file musik terlebih dahulu.\n\n" +
-      "Contoh: music.mp3"
-    );
-
-    return;
-
-  }
-
-
-  if (musicPlaying) {
-
-    music.pause();
-
-    musicBtn.innerHTML = "♫";
-
-    musicPlaying = false;
-
-  } else {
-
-    music.play();
-
-    musicBtn.innerHTML = "❚❚";
-
-    musicPlaying = true;
-
-  }
-
-});
-
-
-/* =====================================================
-   PARALLAX EFFECT
-===================================================== */
-
-window.addEventListener("scroll", () => {
-
-  const scrollY = window.scrollY;
-
-  const clouds =
-    document.querySelectorAll(".cloud");
-
-  clouds.forEach((cloud, index) => {
-
-    const speed =
-      0.03 + index * 0.01;
-
-    cloud.style.transform =
-      `translateY(${scrollY * speed}px)`;
-
-  });
-
-});
-
-
-/* =====================================================
-   RANDOM SPARKLE ON CLICK
-===================================================== */
-
-document.addEventListener("click", (event) => {
-
-  if (
-    event.target.closest("button") ||
-    event.target.closest(".envelope")
-  ) {
-    createClickSparkle(
-      event.clientX,
-      event.clientY
-    );
-  }
-
-});
+);
 
 
 function createClickSparkle(x, y) {
@@ -348,34 +559,48 @@ function createClickSparkle(x, y) {
   const sparkle =
     document.createElement("span");
 
-  sparkle.innerHTML = "✦";
 
-  sparkle.style.position = "fixed";
+  sparkle.textContent =
+    "✦";
 
-  sparkle.style.left = x + "px";
 
-  sparkle.style.top = y + "px";
+  sparkle.style.position =
+    "fixed";
 
-  sparkle.style.pointerEvents = "none";
+  sparkle.style.left =
+    x + "px";
 
-  sparkle.style.zIndex = "300";
+  sparkle.style.top =
+    y + "px";
 
-  sparkle.style.fontSize = "20px";
+  sparkle.style.zIndex =
+    "2000";
 
-  sparkle.style.color = "#ffffff";
+  sparkle.style.pointerEvents =
+    "none";
+
+  sparkle.style.fontSize =
+    "20px";
+
+  sparkle.style.color =
+    "#ffffff";
 
   sparkle.style.transition =
-    "all 0.8s ease";
+    "all .8s ease";
 
-  document.body.appendChild(sparkle);
+
+  document.body.appendChild(
+    sparkle
+  );
 
 
   requestAnimationFrame(() => {
 
     sparkle.style.transform =
-      "translateY(-35px) scale(1.5)";
+      "translateY(-40px) scale(1.5)";
 
-    sparkle.style.opacity = "0";
+    sparkle.style.opacity =
+      "0";
 
   });
 
@@ -390,11 +615,22 @@ function createClickSparkle(x, y) {
 
 
 /* =====================================================
-   PAGE LOAD
+   ESC CLOSE MODAL
 ===================================================== */
 
-window.addEventListener("load", () => {
+document.addEventListener(
+  "keydown",
+  (event) => {
 
-  document.body.classList.add("loaded");
+    if (
+      event.key === "Escape"
+    ) {
 
-});
+      surpriseModal.classList.remove(
+        "active"
+      );
+
+    }
+
+  }
+);
