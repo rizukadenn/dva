@@ -8,136 +8,93 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- MUSIC -->
-  <audio id="birthdayMusic" loop>
-    <!-- Masukkan file musik kamu di sini -->
-    <!-- Contoh:
-    <source src="music.mp3" type="audio/mpeg">
-    -->
-  </audio>
+  <!-- =====================================================
+       LOADING SCREEN
+  ====================================================== -->
 
-  <button class="music-btn" id="musicBtn" aria-label="Music">
-    ♫
-  </button>
+  <div class="loading-screen" id="loadingScreen">
 
-  <!-- FLOATING BACKGROUND -->
-  <div class="floating-elements">
-    <span>✦</span>
-    <span>♡</span>
-    <span>✧</span>
-    <span>✦</span>
-    <span>♡</span>
-    <span>✧</span>
-    <span>✦</span>
-    <span>♡</span>
+    <div class="loading-content">
+
+      <div class="loading-symbol">
+        ✦
+      </div>
+
+      <p class="loading-small">
+        preparing something special
+      </p>
+
+      <div class="loading-line">
+        <span id="loadingProgress"></span>
+      </div>
+
+      <p class="loading-percent" id="loadingPercent">
+        0%
+      </p>
+
+    </div>
+
   </div>
 
-  <!-- CLOUDS -->
-  <div class="cloud cloud-1">☁</div>
-  <div class="cloud cloud-2">☁</div>
-  <div class="cloud cloud-3">☁</div>
 
-  <!-- ================= HERO ================= -->
+  <!-- =====================================================
+       INTRO SCREEN
+  ====================================================== -->
 
-  <section class="hero">
+  <section class="intro-screen" id="introScreen">
 
-    <div class="hero-content">
+    <div class="intro-background">
 
-      <p class="small-title">
-        a little surprise for you
-      </p>
+      <span class="intro-star star-a">✦</span>
+      <span class="intro-star star-b">✧</span>
+      <span class="intro-star star-c">⋆</span>
+      <span class="intro-star star-d">✦</span>
 
-      <h1>
-        Happy<br>
-        <span>Birthday</span>
-      </h1>
+      <span class="intro-heart heart-a">♡</span>
+      <span class="intro-heart heart-b">♡</span>
+      <span class="intro-heart heart-c">♡</span>
 
-      <div class="star-line">
-        ✦ ─── 🩵 ─── ✦
-      </div>
-
-      <p class="hero-description">
-        Hari ini adalah hari yang spesial,
-        karena seseorang yang spesial sedang bertambah usia.
-      </p>
-
-      <button class="main-button" id="openLetterBtn">
-        Open Your Letter
-        <span>♡</span>
-      </button>
-
-      <div class="scroll-hint">
-        <span>scroll slowly</span>
-        <div class="scroll-line"></div>
-      </div>
+      <div class="intro-cloud cloud-a">☁</div>
+      <div class="intro-cloud cloud-b">☁</div>
 
     </div>
 
-  </section>
+
+    <div class="intro-content">
+
+      <p class="intro-top-text">
+        you have a little letter
+      </p>
 
 
-  <!-- ================= LETTER ================= -->
+      <!-- AMPOP -->
 
-  <section class="letter-section reveal">
-
-    <div class="section-label">
-      <span>01</span>
-      <p>A little letter</p>
-    </div>
-
-    <div class="letter-wrapper">
-
-      <div class="envelope" id="envelope">
+      <div
+        class="intro-envelope"
+        id="introEnvelope"
+      >
 
         <div class="envelope-back"></div>
 
-        <div class="letter-paper">
-
-          <div class="letter-decoration top-left">✦</div>
-          <div class="letter-decoration top-right">♡</div>
-
-          <p class="letter-date">
-            for someone special
-          </p>
-
-          <h2>
-            Dear You,
-          </h2>
+        <div class="envelope-letter">
 
           <p>
-            Selamat ulang tahun untuk seseorang yang begitu
-            berharga. Semoga di usia yang baru ini, banyak
-            hal baik datang menghampirimu.
+            a little surprise
           </p>
 
-          <p>
-            Semoga hari-harimu dipenuhi hal-hal kecil yang
-            membuatmu tersenyum, orang-orang yang tulus,
-            dan mimpi-mimpi yang perlahan menjadi nyata.
-          </p>
-
-          <p>
-            Jangan lupa untuk selalu menghargai dirimu sendiri.
-            Kamu sudah berjalan sejauh ini, dan itu adalah
-            sesuatu yang patut dibanggakan.
-          </p>
-
-          <p>
-            Terima kasih sudah menjadi dirimu sendiri.
-            Semoga tahun ini menjadi salah satu bab
-            terbaik dalam hidupmu. 🩵
-          </p>
-
-          <div class="letter-sign">
-            With lots of love,<br>
-            <span>Someone who cares ♡</span>
+          <div class="mini-heart">
+            ♡
           </div>
 
         </div>
@@ -146,288 +103,668 @@
 
         <div class="envelope-flap"></div>
 
-        <div class="envelope-heart">
+        <div class="envelope-seal">
           ♡
         </div>
 
       </div>
 
-      <p class="click-hint">
-        click the envelope ♡
-      </p>
 
-    </div>
-
-  </section>
-
-
-  <!-- ================= MEMORY ================= -->
-
-  <section class="memory-section reveal">
-
-    <div class="section-label">
-      <span>02</span>
-      <p>Little memories</p>
-    </div>
-
-    <div class="section-heading">
-
-      <p class="eyebrow">
-        just a few moments
-      </p>
-
-      <h2>
-        Tiny memories,<br>
-        <span>big feelings.</span>
-      </h2>
-
-      <p>
-        Tidak perlu banyak foto untuk mengingat
-        sesuatu yang berarti.
-      </p>
-
-    </div>
-
-
-    <div class="photo-grid">
-
-      <!-- FOTO 1 -->
-      <div class="photo-card photo-one">
-
-        <div class="photo-frame">
-
-          <img
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80"
-            alt="Memory 1"
-          >
-
-          <div class="photo-tape"></div>
-
-        </div>
-
-        <p>
-          one little moment ♡
-        </p>
-
-      </div>
-
-
-      <!-- FOTO 2 -->
-      <div class="photo-card photo-two">
-
-        <div class="photo-frame">
-
-          <img
-            src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"
-            alt="Memory 2"
-          >
-
-          <div class="photo-tape"></div>
-
-        </div>
-
-        <p>
-          a beautiful memory ✦
-        </p>
-
-      </div>
-
-
-      <!-- FOTO 3 -->
-      <div class="photo-card photo-three">
-
-        <div class="photo-frame">
-
-          <img
-            src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?auto=format&fit=crop&w=800&q=80"
-            alt="Memory 3"
-          >
-
-          <div class="photo-tape"></div>
-
-        </div>
-
-        <p>
-          keep this moment ♡
-        </p>
-
-      </div>
-
-    </div>
-
-    <p class="photo-note">
-      * nanti foto-foto ini bisa kamu ganti dengan foto kalian sendiri 🩵
-    </p>
-
-  </section>
-
-
-  <!-- ================= WISHES ================= -->
-
-  <section class="wishes-section reveal">
-
-    <div class="section-label">
-      <span>03</span>
-      <p>Birthday wishes</p>
-    </div>
-
-    <div class="section-heading center">
-
-      <p class="eyebrow">
-        for your new chapter
-      </p>
-
-      <h2>
-        I wish you...
-      </h2>
-
-    </div>
-
-
-    <div class="wish-grid">
-
-      <div class="wish-card">
-        <div class="wish-icon">☁</div>
-        <h3>Peace</h3>
-        <p>
-          Semoga hatimu selalu menemukan
-          tempat untuk beristirahat.
-        </p>
-      </div>
-
-
-      <div class="wish-card">
-        <div class="wish-icon">✦</div>
-        <h3>Dreams</h3>
-        <p>
-          Semoga mimpi-mimpi kecilmu
-          perlahan menjadi kenyataan.
-        </p>
-      </div>
-
-
-      <div class="wish-card">
-        <div class="wish-icon">♡</div>
-        <h3>Love</h3>
-        <p>
-          Semoga selalu dikelilingi
-          oleh kasih sayang yang tulus.
-        </p>
-      </div>
-
-
-      <div class="wish-card">
-        <div class="wish-icon">🌷</div>
-        <h3>Happiness</h3>
-        <p>
-          Semoga ada banyak alasan kecil
-          untuk tersenyum setiap hari.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= SURPRISE ================= -->
-
-  <section class="surprise-section reveal">
-
-    <div class="section-label">
-      <span>04</span>
-      <p>One last thing</p>
-    </div>
-
-
-    <div class="surprise-content">
-
-      <p class="eyebrow">
-        are you ready?
-      </p>
-
-      <h2>
-        There's a little<br>
-        <span>surprise for you.</span>
-      </h2>
-
-      <p>
-        Klik kotak di bawah ini.
-        Tapi hati-hati... mungkin ada terlalu banyak
-        rasa sayang di dalamnya. ♡
+      <p
+        class="envelope-hint"
+        id="envelopeHint"
+      >
+        click the envelope
       </p>
 
 
-      <button
-        class="gift"
-        id="giftBox"
-        aria-label="Open gift"
+      <!-- NAMA -->
+
+      <div
+        class="recipient-container"
+        id="recipientContainer"
       >
 
-        <div class="gift-lid">
-          <span></span>
+        <p class="recipient-label">
+          this little surprise is for
+        </p>
+
+        <!-- UBAH NAMA DI SINI -->
+
+        <h1 class="recipient-name">
+          Your Name
+        </h1>
+
+        <div class="recipient-stars">
+          ✦　♡　✦
         </div>
 
-        <div class="gift-box">
-          <div class="gift-ribbon vertical"></div>
-          <div class="gift-ribbon horizontal"></div>
+        <p class="recipient-message">
+          Seseorang yang pantas mendapatkan
+          banyak kebahagiaan hari ini.
+        </p>
+
+        <button
+          class="enter-button"
+          id="enterButton"
+        >
+          Enter Your Birthday
+          <span>→</span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MAIN WEBSITE
+  ====================================================== -->
+
+  <main
+    class="main-site"
+    id="mainSite"
+  >
+
+    <!-- PARTICLES -->
+
+    <div class="floating-particles">
+
+      <span>✦</span>
+      <span>♡</span>
+      <span>✧</span>
+      <span>⋆</span>
+      <span>♡</span>
+      <span>✦</span>
+      <span>✧</span>
+      <span>♡</span>
+      <span>⋆</span>
+      <span>✦</span>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-cloud hero-cloud-one">
+        ☁
+      </div>
+
+      <div class="hero-cloud hero-cloud-two">
+        ☁
+      </div>
+
+      <div class="hero-content">
+
+        <p class="hero-eyebrow">
+          today is your special day
+        </p>
+
+        <h2>
+          Happy
+          <span>Birthday</span>
+        </h2>
+
+        <div class="hero-decoration">
+          ✦ ─── ♡ ─── ✦
         </div>
 
-      </button>
+        <p class="hero-text">
+          Hari ini bukan sekadar tentang bertambahnya
+          usia. Hari ini adalah tentang merayakan
+          seseorang yang begitu berarti.
+        </p>
+
+        <button
+          class="scroll-button"
+          id="scrollButton"
+        >
+          discover your little surprise
+          <span>↓</span>
+        </button>
+
+      </div>
+
+    </section>
 
 
-      <p class="gift-hint">
-        click me 🎁
+    <!-- =====================================================
+         ANIMATED MEMORIES
+    ====================================================== -->
+
+    <section class="animation-section reveal">
+
+      <div class="section-number">
+        01
+      </div>
+
+      <div class="section-title">
+
+        <p>
+          little dreamy moments
+        </p>
+
+        <h2>
+          A tiny world
+          <span>made for you.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="animation-grid">
+
+
+        <!-- =================================================
+             SCENE 1 — CLOUD
+        ================================================== -->
+
+        <div class="animation-card">
+
+          <div class="scene scene-cloud">
+
+            <div class="scene-stars">
+              ✦　✧　⋆　✦
+            </div>
+
+            <div class="big-cloud cloud-left">
+              ☁
+            </div>
+
+            <div class="big-cloud cloud-right">
+              ☁
+            </div>
+
+            <div class="small-cloud cloud-middle">
+              ☁
+            </div>
+
+            <div class="floating-heart">
+              ♡
+            </div>
+
+            <div class="floating-heart heart-two">
+              ♡
+            </div>
+
+            <div class="scene-moon">
+              ☾
+            </div>
+
+          </div>
+
+          <div class="animation-caption">
+
+            <span>
+              01
+            </span>
+
+            <h3>
+              Soft Clouds
+            </h3>
+
+            <p>
+              Semoga hari-harimu selalu
+              selembut awan.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SCENE 2 — MOON
+        ================================================== -->
+
+        <div class="animation-card">
+
+          <div class="scene scene-night">
+
+            <div class="night-stars">
+
+              <span>✦</span>
+              <span>✧</span>
+              <span>⋆</span>
+              <span>✦</span>
+              <span>✧</span>
+              <span>⋆</span>
+              <span>✦</span>
+              <span>✧</span>
+
+            </div>
+
+            <div class="moon">
+
+              <div class="moon-crater crater-one"></div>
+              <div class="moon-crater crater-two"></div>
+              <div class="moon-crater crater-three"></div>
+
+            </div>
+
+            <div class="moon-cloud">
+              ☁
+            </div>
+
+            <div class="shooting-star">
+              ✦
+            </div>
+
+          </div>
+
+          <div class="animation-caption">
+
+            <span>
+              02
+            </span>
+
+            <h3>
+              Dreamy Night
+            </h3>
+
+            <p>
+              Semoga semua mimpi indahmu
+              menemukan jalannya.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SCENE 3 — GARDEN
+        ================================================== -->
+
+        <div class="animation-card">
+
+          <div class="scene scene-garden">
+
+            <div class="garden-sun">
+              ☀
+            </div>
+
+            <div class="garden-cloud">
+              ☁
+            </div>
+
+            <div class="butterfly butterfly-one">
+              🦋
+            </div>
+
+            <div class="butterfly butterfly-two">
+              🦋
+            </div>
+
+            <div class="butterfly butterfly-three">
+              🦋
+            </div>
+
+            <div class="flower flower-one">
+              🌷
+            </div>
+
+            <div class="flower flower-two">
+              🌸
+            </div>
+
+            <div class="flower flower-three">
+              🌷
+            </div>
+
+            <div class="grass"></div>
+
+          </div>
+
+          <div class="animation-caption">
+
+            <span>
+              03
+            </span>
+
+            <h3>
+              Little Garden
+            </h3>
+
+            <p>
+              Semoga hidupmu selalu dipenuhi
+              hal-hal yang bermekaran.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LETTER
+    ====================================================== -->
+
+    <section class="letter-section reveal">
+
+      <div class="section-number">
+        02
+      </div>
+
+      <div class="section-title">
+
+        <p>
+          a letter for you
+        </p>
+
+        <h2>
+          A few words
+          <span>from the heart.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="main-envelope-wrapper">
+
+        <div
+          class="main-envelope"
+          id="mainEnvelope"
+        >
+
+          <div class="main-envelope-back"></div>
+
+          <div class="main-letter-paper">
+
+            <div class="paper-star">
+              ✦
+            </div>
+
+            <p class="paper-small">
+              for you, with love
+            </p>
+
+            <h3>
+              Dear You,
+            </h3>
+
+            <p>
+              Selamat ulang tahun untuk seseorang
+              yang begitu spesial.
+            </p>
+
+            <p>
+              Semoga di usia yang baru ini,
+              kamu menemukan lebih banyak alasan
+              untuk tersenyum, lebih banyak hal
+              untuk disyukuri, dan lebih banyak
+              mimpi yang perlahan menjadi nyata.
+            </p>
+
+            <p>
+              Semoga setiap langkah yang kamu ambil
+              membawa kamu lebih dekat dengan
+              hal-hal yang kamu inginkan.
+            </p>
+
+            <p>
+              Dan ketika hari terasa berat,
+              semoga kamu selalu ingat bahwa
+              kamu sudah melewati begitu banyak hal
+              sampai berada di titik ini.
+            </p>
+
+            <p>
+              Keep going.
+              Keep dreaming.
+              And most importantly,
+              keep being you. 🩵
+            </p>
+
+            <div class="paper-sign">
+              With lots of love,<br>
+              <span>
+                Someone who cares ♡
+              </span>
+            </div>
+
+          </div>
+
+          <div class="main-envelope-front"></div>
+
+          <div class="main-envelope-flap"></div>
+
+          <div class="main-envelope-heart">
+            ♡
+          </div>
+
+        </div>
+
+        <p class="envelope-open-hint">
+          click the envelope to open
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WISHES
+    ====================================================== -->
+
+    <section class="wish-section reveal">
+
+      <div class="section-number">
+        03
+      </div>
+
+      <div class="section-title centered">
+
+        <p>
+          birthday wishes
+        </p>
+
+        <h2>
+          I wish you
+          <span>beautiful things.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="wish-grid">
+
+
+        <div class="wish-card">
+
+          <div class="wish-icon">
+            ☁
+          </div>
+
+          <h3>
+            Peace
+          </h3>
+
+          <p>
+            Semoga hatimu selalu menemukan
+            tempat untuk beristirahat.
+          </p>
+
+        </div>
+
+
+        <div class="wish-card">
+
+          <div class="wish-icon">
+            ✦
+          </div>
+
+          <h3>
+            Dreams
+          </h3>
+
+          <p>
+            Semoga mimpi-mimpi kecilmu
+            perlahan menjadi kenyataan.
+          </p>
+
+        </div>
+
+
+        <div class="wish-card">
+
+          <div class="wish-icon">
+            ♡
+          </div>
+
+          <h3>
+            Love
+          </h3>
+
+          <p>
+            Semoga selalu dikelilingi
+            kasih sayang yang tulus.
+          </p>
+
+        </div>
+
+
+        <div class="wish-card">
+
+          <div class="wish-icon">
+            🌷
+          </div>
+
+          <h3>
+            Happiness
+          </h3>
+
+          <p>
+            Semoga selalu ada alasan kecil
+            untuk tersenyum setiap hari.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GIFT
+    ====================================================== -->
+
+    <section class="surprise-section reveal">
+
+      <div class="section-number">
+        04
+      </div>
+
+      <div class="surprise-content">
+
+        <p class="surprise-eyebrow">
+          one last thing
+        </p>
+
+        <h2>
+          There's a little
+          <span>surprise.</span>
+        </h2>
+
+        <p>
+          Kamu sudah sampai sejauh ini...
+          jadi mungkin ada satu hal terakhir
+          yang ingin disampaikan.
+        </p>
+
+
+        <button
+          class="gift"
+          id="giftBox"
+        >
+
+          <div class="gift-lid"></div>
+
+          <div class="gift-body">
+
+            <div class="gift-ribbon vertical"></div>
+
+            <div class="gift-ribbon horizontal"></div>
+
+          </div>
+
+        </button>
+
+
+        <p class="gift-hint">
+          click the gift
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL
+    ====================================================== -->
+
+    <section class="final-section">
+
+      <div class="final-moon">
+        ☾
+      </div>
+
+      <div class="final-stars">
+        ✦　✧　⋆　✦　⋆　✧
+      </div>
+
+      <p class="final-small">
+        once again...
       </p>
 
-    </div>
+      <h2>
+        Happy Birthday,
+        <span>Your Name.</span>
+      </h2>
 
-  </section>
+      <p class="final-message">
+        Semoga bab baru dalam hidupmu dipenuhi
+        dengan cerita yang indah, orang-orang
+        yang tulus, dan banyak alasan untuk
+        tersenyum.
+      </p>
 
+      <div class="final-heart">
+        ♡
+      </div>
 
-  <!-- ================= FINAL MESSAGE ================= -->
+      <p class="footer-text">
+        made with love · 2026
+      </p>
 
-  <section class="final-section">
+    </section>
 
-    <div class="moon">
-      ☾
-    </div>
-
-    <div class="final-stars">
-      ✦　✧　⋆　✦　⋆　✧
-    </div>
-
-    <p class="eyebrow">
-      once again...
-    </p>
-
-    <h2>
-      Happy Birthday
-      <span>Beautiful Soul.</span>
-    </h2>
-
-    <p class="final-message">
-      Semoga tahun ini membawa lebih banyak
-      cerita indah, tawa, dan alasan untuk
-      mencintai kehidupan.
-    </p>
-
-    <div class="final-heart">
-      ♡
-    </div>
-
-    <p class="copyright">
-      made with love · 2026
-    </p>
-
-  </section>
+  </main>
 
 
-  <!-- ================= SURPRISE MODAL ================= -->
+  <!-- =====================================================
+       SURPRISE MODAL
+  ====================================================== -->
 
-  <div class="surprise-modal" id="surpriseModal">
+  <div
+    class="surprise-modal"
+    id="surpriseModal"
+  >
 
-    <div class="modal-content">
+    <div class="modal-box">
 
       <button
         class="close-modal"
@@ -436,33 +773,32 @@
         ×
       </button>
 
-      <div class="modal-icon">
-        🩵
+      <div class="modal-heart">
+        ♡
       </div>
 
-      <p class="eyebrow">
+      <p class="modal-small">
         a tiny message
       </p>
 
       <h2>
-        You deserve<br>
+        You deserve
         <span>beautiful things.</span>
       </h2>
 
       <p>
-        Semoga kamu selalu ingat bahwa
-        keberadaanmu berarti bagi orang-orang
-        di sekitarmu.
+        Semoga kamu selalu tahu bahwa
+        keberadaanmu berarti.
       </p>
 
       <p>
-        Jangan pernah berhenti bermimpi,
-        jangan takut untuk tumbuh,
-        dan jangan lupa menikmati perjalananmu.
+        Semoga hari ini mengingatkanmu
+        bahwa kamu pantas mendapatkan
+        banyak hal baik dalam hidup.
       </p>
 
       <div class="modal-sign">
-        Happy Birthday ♡
+        Happy Birthday 🩵
       </div>
 
     </div>
@@ -471,6 +807,7 @@
 
 
   <!-- CONFETTI -->
+
   <div id="confettiContainer"></div>
 
 
